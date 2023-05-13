@@ -115,8 +115,10 @@ public class SRScratchView:UIImageView {
         
         for x in 0...Int(width) {
             for y in 0...Int(height) {
-                let index = y * width + x
-                guard pixelData.count > index else { continue }
+               let index = y * width + x
+              
+              guard width > 0, height > 0 else { continue }
+              guard index < bitmapByteCount else { continue }
                 
                 if pixelData[index] == 0 {
                     alphaOnlyPixels += 1
